@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>La Míralo Qué Bien Va | En vivo en el Marquee</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<main>    
+    
+<!-- PORTADA -->
+<section id="intro">
+
+    <img id="background"
+         src="images/Escenario3.png"
+         alt="Escenario">
+    
+
+    <div id="overlay"></div>
+
+    <div id="contenido">
+
+        <img id="logo"
+             src="images/logo.png"
+             alt="La Míralo Qué Bien Va">
+
+        <div id="hero">
+
+        <h1>Una noche.</h1>
+
+        <h1>Un escenario.</h1>
+
+        <h1>Once músicos.</h1>
+
+        <h1>Doce canciones.</h1>
+
+        <p class="concert-live">
+
+    EN VIVO
+
+</p>
+
+        <button id="listenButton">
+
+    <strong>▶ COMENZAR CONCIERTO</strong>
+
+    <span>Marquee</span>
+
+    <span>Julio 2026</span>
+
+</button>
+
+    </div> <!-- hero -->
+
+</div> <!-- contenido -->
+
+</section> <!-- intro -->
+
+<!-- ÁLBUM -->
+
+
+
+    <section id="album"><div class="album-container">
+
+
+        <div class="album-cover">
+
+    <img
+        src="images/album-cover.png"
+        alt="La Míralo Qué Bien Va en vivo en el Marquee">
+
+</div> <!-- album-cover -->
+
+    <div id="concertPlayer">
+
+        <div class="album-player">
+           
+            <div id="playerCard">
+
+    <p id="playerStatus" class="now-playing">
+    ● EN VIVO
+</p>
+
+    <h3 id="songTitle">
+    Intro y Cumbia Buena
+</h3>
+
+<p id="trackInfo" class="track-info">
+    Tema 1 de 12
+</p>
+
+    <div class="player-controls">
+
+    <button id="prevSong">⏮</button>
+
+    <button id="playSong">▶</button>
+
+    <button id="nextSong">⏭</button>
+
+</div> <!-- player-controls -->
+
+    <div class="progress-bar">
+
+    <div id="progress" class="progress"></div>
+
+</div> <!-- progress-bar -->
+
+<p id="timeDisplay" class="time">
+    0:00 / 0:00
+</p>
+
+</div> <!-- playerCard -->
+
+</div> <!-- album-player -->
+
+<div id="playlist"></div>
+
+<div id="liveGallery">
+
+    <img
+        id="livePhoto"
+        src="images/live/live01.jpg"
+        alt="La Míralo Qué Bien Va en vivo">
+
+</div>
+
+<div class="credits-button-container">
+
+    <button id="creditsButton">
+
+        Ficha técnica
+
+    </button>
+
+</div>
+    
+    </div> <!-- concertPlayer -->  
+
+    </div> <!-- album-container -->
+
+    <audio id="albumAudio"></audio>
+
+    <div id="concertEnding">
+
+    <h2>Gracias por acompañarnos</h2>
+
+    <p class="ending-band">
+        La Míralo Qué Bien Va
+    </p>
+
+    <p class="ending-show">
+        En vivo en el Marquee
+    </p>
+
+    <button id="restartConcert">
+        ▶ Volver a escuchar
+    </button>
+
+</div>
+
+</section> <!-- album -->
+
+</main>
+
+<!-- =====================================
+     MODAL FICHA TÉCNICA
+===================================== -->
+
+<div id="creditsModal">
+
+    <div id="creditsWindow">
+
+        <button id="closeCredits">
+
+            ✕
+
+        </button>
+
+        <h2>
+
+            FICHA TÉCNICA
+
+        </h2>
+
+        <div class="credits-subtitle">
+
+    La Míralo Qué Bien Va
+
+    <span>EN VIVO</span>
+
+        </div>
+
+<hr class="credits-divider">
+
+<div id="creditsContent">
+
+           <div class="credits-section">
+
+    <h3>MÚSICOS</h3>
+
+    <div class="credits-item">
+        <div class="credits-name">Leo Marciro</div>
+        <div class="credits-role">BAJO · VOZ</div>
+    </div>
+
+    <div class="credits-item">
+        <div class="credits-name">Leonardo Pérez</div>
+        <div class="credits-role">GUITARRA · VOZ</div>
+    </div>
+
+    <div class="credits-item">
+        <div class="credits-name">Matías Gabioud</div>
+        <div class="credits-role">VOZ</div>
+    </div>
+
+    <div class="credits-item">
+        <div class="credits-name">Alberto Sassoon</div>
+        <div class="credits-role">SAXO ALTO y CLARINETE</div>
+    </div>
+
+    <div class="credits-item">
+        <div class="credits-name">Rubén Bullejos</div>
+        <div class="credits-role">SAXO BARÍTONO</div>
+    </div>
+
+    <div class="credits-item">
+        <div class="credits-name">Eduardo Daloia</div>
+        <div class="credits-role">SAXO TENOR</div>
+    </div>
+
+    <div class="credits-item">
+        <div class="credits-name">Javier Kummer</div>
+        <div class="credits-role">TROMPETA 1</div>
+    </div>
+
+    <div class="credits-item">
+        <div class="credits-name">Jim Beaux</div>
+        <div class="credits-role">TROMPETA 2</div>
+    </div>
+
+    <div class="credits-item">
+        <div class="credits-name">Roberto Gárriz</div>
+        <div class="credits-role">TROMBÓN</div>
+    </div>
+
+    <div class="credits-item">
+        <div class="credits-name">Gianfranco Barnabá</div>
+        <div class="credits-role">PERCUSIÓN</div>
+    </div>
+
+    <div class="credits-item">
+        <div class="credits-name">Facundo Pegue</div>
+        <div class="credits-role">PERCUSIÓN</div>
+    </div>
+
+</div>
+
+<hr class="credits-divider">
+
+<div class="credits-section">
+
+    <h3>ARREGLOS MUSICALES</h3>
+
+    <div class="credits-item">
+
+        <div class="credits-name">Leo Marciro</div>
+
+    </div>
+
+    <hr class="credits-divider">
+
+<div class="credits-section">
+
+    <h3>DIRECCIÓN MUSICAL</h3>
+
+    <div class="credits-item">
+
+        <div class="credits-name">Leo Pérez</div>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>

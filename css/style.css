@@ -1,0 +1,1360 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:#000;
+
+}
+
+#intro{
+
+    position:relative;
+
+    width:100%;
+    height:100vh;
+
+}
+
+#background{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+#overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    pointer-events:none;
+
+}
+
+#contenido{
+
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    text-align:left;
+
+    color:white;
+
+    padding:60px 0 60px 80px;
+
+}
+
+#logo{
+
+    width:170px;
+
+    max-width:none;
+
+    margin-bottom:55px;
+
+    filter:drop-shadow(0 0 18px rgba(0,0,0,.75));
+
+    position: relative;
+    top: -95px;
+
+}
+
+h1{
+
+    color:#d4af37;
+
+    font-size:3rem;
+
+    font-weight:300;
+
+    margin:5px 0;
+
+}
+
+p{
+
+    margin-top:35px;
+
+    font-size:1.25rem;
+
+    max-width:700px;
+
+    line-height:1.7;
+
+}
+
+/* =====================================
+   Subtítulo del concierto
+===================================== */
+
+.concert-live{
+
+    margin-top:18px;
+
+    margin-bottom:18px;
+
+    text-align:center;
+
+    color:#d4af37;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+}
+
+button{
+
+    margin-top:65px;
+
+    padding:18px 34px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:#d4af37;
+
+    color:#111;
+
+    font-weight:bold;
+
+letter-spacing:.5px;
+
+box-shadow:0 8px 24px rgba(212,175,55,.35);
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:all .3s ease;
+
+}
+
+button:hover{
+
+    transform:translateY(-3px) scale(1.04);
+
+    box-shadow:0 14px 30px rgba(0,0,0,.60);
+}
+
+/* ==========================================
+   ÁLBUM
+========================================== */
+
+#album{
+    background:#0b0b0b;
+    color:white;
+    padding:90px 20px;
+}
+
+.album-container{
+    max-width:900px;
+    margin:0 auto;
+    text-align:center;
+}
+
+.album-logo{
+    width:220px;
+    height:auto;
+    margin-bottom:25px;
+}
+
+.album-info h2{
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:3.3rem;
+
+    font-weight:500;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    margin-bottom:15px;
+}
+
+.album-date{
+
+    color:#c8b27a;
+
+    font-size:1.1rem;
+
+    text-align:center;
+
+    margin:10px auto 18px;
+
+}
+
+.album-style{
+    max-width:650px;
+    margin:0 auto 45px;
+    line-height:1.8;
+    color:#d6d6d6;
+}
+
+.album-cover{
+
+    width:100%;
+    max-width:1000px;
+    height:560px;
+
+    margin:0 auto 70px;
+
+    border:none;
+
+    background:#181818;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#777;
+    font-style:italic;
+}
+
+.album-cover img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    border-radius:10px;
+
+    box-shadow:0 12px 40px rgba(0,0,0,.45);
+
+}
+
+/* =====================================
+   Animación de la carátula
+===================================== */
+
+.album-cover img{
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+
+}
+
+.album-pulse{
+
+    transform:scale(1.01);
+
+    box-shadow:0 18px 50px rgba(0,0,0,.60);
+
+}
+
+#playAlbumButton{
+
+    background:#d4af37;
+
+    color:#111;
+
+    border:none;
+
+    padding:18px 40px;
+
+    font-size:1rem;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    border-radius:40px;
+
+    transition:.3s;
+
+}
+
+#playAlbumButton:hover{
+
+    background:#dfca95;
+
+    transform:translateY(-2px);
+
+}
+
+#album{
+
+    background:#0b0b0b;
+
+    min-height:500px;
+
+    color:white;
+
+    padding:35px 20px;
+
+}
+
+#concertPlayer{
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+
+}
+
+#concertPlayer.visible{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+#playlist,
+#liveGallery{
+
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:
+        opacity .55s ease,
+        transform .55s ease;
+
+}
+
+#playlist.visible,
+#liveGallery.visible{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+#playerCard{
+
+    width:100%;
+    max-width:760px;
+
+    margin:45px auto 0;
+
+    padding:35px;
+
+    background:#111;
+
+    border-radius:20px;
+
+    box-shadow:0 15px 45px rgba(0,0,0,.45);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    opacity:.96;
+}
+
+.player-pulse{
+
+    animation:playerPulse .22s ease;
+
+}
+
+@keyframes playerPulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    45%{
+
+        transform:scale(1.015);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+.now-playing{
+
+    color:#d4af37;
+
+    transition:opacity .3s ease;
+
+    font-size:.85rem;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    margin-bottom:14px;
+}
+
+#songTitle{
+
+    font-family:inherit;
+
+    font-size:2.3rem;
+
+    font-weight:600;
+
+    color:white;
+
+    margin-bottom:30px;
+
+    transition:
+    opacity .45s ease,
+    transform .45s cubic-bezier(.22,.61,.36,1),
+    filter .45s ease;
+
+}
+
+.song-changing{
+
+    opacity:0;
+
+    transform:translateY(-26px) scale(.96);
+
+    filter:blur(3px);
+
+}
+
+.player-controls{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin:10px 0 12px 0;
+
+    background:transparent;
+
+}
+
+.player-controls button{
+
+    width:36px;
+    height:36px;
+
+    margin-top:0;
+    padding:0;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#d4af37;
+
+    color:#111;
+
+    font-size:.95rem;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.player-controls button:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 0 20px rgba(200,178,122,.45);
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:8px;
+
+    background:#2b2b2b;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    margin-bottom:16px;
+
+    cursor:pointer;
+
+    position:relative;
+
+}
+
+.progress{
+
+    width:0%;
+
+    height:100%;
+
+    background:#c8b27a;
+
+    position:relative;
+
+    transition:
+        width .15s linear,
+        background .25s ease;
+
+}
+
+.progress::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:0;
+
+    top:50%;
+
+   transform:translateY(-50%) translateX(50%) scale(.85);
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:#d4af37;
+
+    box-shadow:0 0 14px rgba(212,175,55,.45);
+
+    transition:.2s;
+
+}
+
+.progress-bar:hover .progress::after{
+
+    transform:translateY(-50%) translateX(50%) scale(1.2);
+
+}
+
+
+.time{
+
+    color:#aaa;
+
+    font-size:.95rem;
+}
+
+#playlist{
+
+    width:100%;
+
+    max-width:760px;
+
+    margin:25px auto 15px;
+
+}
+.playlist-item{
+
+    display:flex;
+
+    align-items:center;
+
+    padding:18px 22px;
+
+    margin-bottom:4px;
+
+    border-radius:10px;
+
+    background:#171717;
+
+    color:#d9d9d9;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
+    font-size:1rem;
+
+    letter-spacing:.4px;
+
+    font-weight:400;
+
+    gap:18px;
+
+}
+
+.playlist-item.active{
+
+    background:#222018;
+
+    border-left:3px solid #d4af37;
+
+    color:#f5f5f5;
+
+    font-weight:600;
+
+    padding-left:19px;
+
+}
+
+.playlist-item:hover{
+
+    background:#202020;
+
+    transform:translateX(4px);
+
+}
+
+.track-number{
+
+    width:30px;
+
+    color:#777;
+
+    font-size:1.15rem;
+
+    font-variant-numeric:tabular-nums;
+
+}
+
+.track-playing{
+
+    width:30px;
+
+    height:18px;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:3px;
+
+}
+
+.track-playing span{
+
+    width:4px;
+
+    background:#d4af37;
+
+    border-radius:3px;
+
+    animation:equalizer .9s infinite ease-in-out;
+
+}
+
+.track-playing span:nth-child(1){
+
+    animation-delay:0s;
+
+}
+
+.track-playing span:nth-child(2){
+
+    animation-delay:.2s;
+
+}
+
+.track-playing span:nth-child(3){
+
+    animation-delay:.4s;
+
+}
+
+@keyframes equalizer{
+
+    0%{
+
+        height:5px;
+
+    }
+
+    50%{
+
+        height:16px;
+
+    }
+
+    100%{
+
+        height:7px;
+
+    }
+
+}
+
+.track-title{
+
+    flex:1;
+
+}
+
+.track-duration{
+
+    width:55px;
+
+    text-align:right;
+
+    color:#777;
+
+    font-variant-numeric:tabular-nums;
+
+}
+
+.track-info{
+
+    margin-top:4px;
+
+    color:#8e8e8e;
+
+    font-size:.78rem;
+
+    letter-spacing:.6px;
+
+    text-align:center;
+
+}
+
+.track-playing.paused span{
+
+    animation-play-state: paused;
+
+}
+
+/* =====================================
+   GALERÍA EN VIVO
+===================================== */
+
+#liveGallery{
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:35px auto 40px;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 18px 45px rgba(0,0,0,.45);
+
+    background:#111;
+
+}
+
+#livePhoto{
+
+    width:100%;
+
+    display:block;
+
+    opacity:1;
+
+    border-radius:14px;
+
+    transform:scale(1);
+
+    transition:
+        opacity .8s ease;
+
+}
+
+@keyframes kenBurns{
+
+    from{
+
+        transform:scale(1);
+
+    }
+
+    to{
+
+        transform:scale(1.06);
+
+    }
+
+}
+
+/* =====================================
+   Final del concierto
+===================================== */
+
+#concertEnding{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(30px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+
+    text-align:center;
+
+    padding:80px 20px;
+
+}
+
+#concertEnding.visible{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+#concertEnding h2{
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:3rem;
+
+    color:#d4af37;
+
+    margin-bottom:18px;
+
+}
+
+.ending-band{
+
+    font-size:1.35rem;
+
+    color:white;
+
+    margin-bottom:10px;
+
+}
+
+.ending-show{
+
+    color:#aaa;
+
+    margin-bottom:45px;
+
+}
+
+/* =====================================
+   Botón Ficha Técnica
+===================================== */
+
+.credits-button-container{
+
+    display:block;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+#creditsButton{
+
+    display:block;
+
+    margin:0 auto;
+
+    padding:12px 34px;
+
+    background:transparent;
+
+    color:#c8b27a;
+
+    border:1px solid #c8b27a;
+
+    border-radius:40px;
+
+    font-size:.95rem;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    transition:all .3s ease;
+
+}
+
+#creditsButton:hover{
+
+    background:#c8b27a;
+
+    color:#111;
+
+    transform:translateY(-2px);
+
+}
+
+/* =====================================
+   MODAL FICHA TÉCNICA
+===================================== */
+
+#creditsModal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.82);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
+
+    z-index:9999;
+
+}
+
+#creditsModal.visible{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+#creditsWindow{
+
+    width:min(92%,650px);
+
+    max-height:88vh;
+
+    overflow-y:auto;
+
+    background:#111;
+
+    border:1px solid rgba(212,175,55,.28);
+
+    border-radius:18px;
+
+    padding:34px;
+
+    box-shadow:
+        0 18px 60px rgba(0,0,0,.65);
+
+    transform:scale(.94);
+
+    transition:transform .35s ease;
+
+    position:relative;
+
+}
+
+#creditsModal.visible #creditsWindow{
+
+    transform:scale(1);
+
+}
+
+#creditsWindow h2{
+
+    color:#d4af37;
+
+    text-align:center;
+
+    letter-spacing:3px;
+
+    margin-bottom:30px;
+
+    font-size:1.6rem;
+
+}
+
+#closeCredits{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:38px;
+
+    height:38px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#1d1d1d;
+
+    color:#d4af37;
+
+    font-size:1.2rem;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:all .25s ease;
+
+}
+
+#closeCredits:hover{
+
+    background:#2b2b2b;
+
+}
+
+.credits-subtitle{
+
+    text-align:center;
+
+    color:#d8d8d8;
+
+    font-size:.95rem;
+
+    letter-spacing:1px;
+
+    margin-top:-14px;
+
+    margin-bottom:28px;
+
+}
+
+.credits-subtitle span{
+
+    display:block;
+
+    margin-top:8px;
+
+    color:#c8b27a;
+
+    font-size:.82rem;
+
+    letter-spacing:4px;
+
+}
+
+.credits-divider{
+
+    border:none;
+
+    height:1px;
+
+    background:rgba(212,175,55,.28);
+
+    margin:22px 0 28px;
+
+}
+
+/* ==============================
+   Secciones de la ficha técnica
+============================== */
+
+.credits-section{
+
+    margin-bottom:36px;
+
+}
+
+.credits-section h3{
+
+    text-align:center;
+
+    color:#d4af37;
+
+    font-size:1rem;
+
+    letter-spacing:3px;
+
+    margin-bottom:28px;
+
+}
+
+.credits-item{
+
+    text-align:center;
+
+}
+
+.credits-name{
+
+    color:#ffffff;
+
+    font-size:1.1rem;
+
+    font-weight:500;
+
+    margin-bottom:6px;
+
+}
+
+.credits-role{
+
+    color:#a8a8a8;
+
+    font-size:.82rem;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    margin-bottom:20px;
+
+}
+
+/* =====================================
+   Responsive - Celulares
+===================================== */
+
+@media (max-width:768px){
+
+    #logo{
+        width:220px;
+        max-width:none;
+        margin-bottom:40px;
+    }
+
+    h1{
+        font-size:2.4rem;
+        line-height:1.15;
+        margin:6px 0;
+        text-align:center;
+    }
+
+    #hero p{
+        font-size:1.05rem;
+        margin-top:18px;
+        text-align:center;
+    }
+
+    #listenButton{
+        margin-top:55px;
+        padding:15px 34px;
+        font-size:1rem;
+    
+    }
+
+    #listenButton{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:3px;
+
+    line-height:1.2;
+
+}
+
+#listenButton span{
+
+    font-size:1rem;
+
+    font-weight:500;
+
+    line-height:1.15;
+
+    opacity:.95;
+
+}
+
+    .album-logo{
+        display:none;
+    }
+
+    .album-info{
+        padding-top:10px;
+    }
+
+    .album-info h2{
+        font-size:2.4rem;
+        margin-top:0;
+        margin-bottom:8px;
+    }
+
+    .album-date{
+        margin:6px auto 10px;
+    }
+
+    .album-style{
+        font-size:.95rem;
+        line-height:1.55;
+        margin:0 auto 20px;
+    }
+
+    .album-cover{
+        height:400px;
+        margin-bottom:5px;
+        transition:transform .6s ease;   
+    }
+
+    #hero h1{
+
+    display:none;
+
+}
+
+#hero p{
+
+    display:none;
+
+}
+
+#contenido{
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px 24px;
+
+}
+
+#logo{
+
+    width:190px;
+
+    margin-bottom:70px;
+
+}
+
+/* ===== Reproductor móvil ===== */
+
+#playerCard{
+
+    margin:14px auto 0;
+    padding:14px 16px;
+
+}
+
+#playerStatus{
+
+    font-size:.70rem;
+
+    margin-top:0;
+    margin-bottom:2px;
+
+}
+
+#songTitle{
+
+    font-size:1rem;
+    margin-bottom:2px;
+    line-height:1.15;
+
+}
+
+#trackInfo{
+
+    font-size:.72rem;
+    margin-bottom:8px;
+
+}
+
+.player-controls{
+
+    margin:4px 0 6px;
+
+}
+
+.player-controls button{
+
+    width:40px;
+
+    height:40px;
+
+    font-size:1rem;
+
+}
+
+#playSong{
+
+    width:46px;
+    height:46px;
+
+    font-size:1.2rem;
+
+    border-radius:50%;
+
+}
+
+.progress-bar{
+
+    margin-top:0;
+    margin-bottom:3px;
+
+}
+
+#timeDisplay{
+
+    font-size:.72rem;
+
+    margin-top:6px;
+
+}
+
+}
+
+/* ==========================
+ 
+
