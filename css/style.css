@@ -80,7 +80,7 @@ body{
 
 #logo{
 
-    width:170px;
+    width:300px;
 
     max-width:none;
 
@@ -90,6 +90,8 @@ body{
 
     position: relative;
     top: -95px;
+
+    align-self:center;
 
 }
 
@@ -103,6 +105,20 @@ h1{
 
     margin:5px 0;
 
+}
+
+#hero{
+    width:max-content;
+}
+
+#hero h1{
+    width:100%;
+    text-align:center;
+}
+
+#hero .concert-live{
+    width:100%;
+    text-align:center;
 }
 
 p{
@@ -181,9 +197,13 @@ button:hover{
 ========================================== */
 
 #album{
+
     background:#0b0b0b;
+
     color:white;
-    padding:90px 20px;
+
+    padding:90px 20px 20px;
+
 }
 
 .album-container{
@@ -348,28 +368,58 @@ button:hover{
 
 }
 
-#playlist,
-#liveGallery{
+<p id="timeDisplay" class="time">
+    0:00 / 0:00
+</p>
 
-    opacity:0;
+</div> <!-- playerCard -->
 
-    transform:translateY(25px);
+</div> <!-- album-player -->
 
-    transition:
-        opacity .55s ease,
-        transform .55s ease;
+<div id="playlist"></div>
 
-}
+<div id="liveGallery">
 
-#playlist.visible,
-#liveGallery.visible{
+    <img
+        id="livePhoto"
+        src="images/live/live01.jpg"
+        alt="La Míralo Qué Bien Va en vivo">
 
-    opacity:1;
+</div>
 
-    transform:translateY(0);
+<div class="credits-button-container">
 
-}
+    <button id="creditsButton">
 
+        Ficha técnica
+
+    </button>
+
+</div>
+    
+    </div> <!-- concertPlayer -->  
+
+    </div> <!-- album-container -->
+
+    <audio id="albumAudio"></audio>
+
+    <div id="concertEnding">
+
+    <h2>Gracias por acompañarnos</h2>
+
+    <p class="ending-band">
+        La Míralo Qué Bien Va
+    </p>
+
+    <p class="ending-show">
+        En vivo en el Marquee
+    </p>
+
+    <button id="restartConcert">
+        ▶ Volver a escuchar
+    </button>
+
+</div>
 #playerCard{
 
     width:100%;
@@ -433,6 +483,10 @@ button:hover{
     text-transform:uppercase;
 
     margin-bottom:14px;
+
+    width:100%;
+
+    text-align:center;
 }
 
 #songTitle{
@@ -585,6 +639,10 @@ button:hover{
     color:#aaa;
 
     font-size:.95rem;
+
+    text-align:center;
+
+    width:100%;
 }
 
 #playlist{
@@ -758,6 +816,7 @@ button:hover{
 
     text-align:center;
 
+    width:100%;
 }
 
 .track-playing.paused span{
@@ -772,9 +831,13 @@ button:hover{
 
 #liveGallery{
 
+    position:relative;
+
     width:100%;
 
     max-width:900px;
+
+    height:560px;
 
     margin:35px auto 40px;
 
@@ -788,23 +851,36 @@ button:hover{
 
 }
 
-#livePhoto{
+#livePhoto,
+#livePhotoNext{
+
+    position:absolute;
+
+    top:0;
+    left:0;
 
     width:100%;
+    height:100%;
 
     display:block;
 
-    opacity:1;
+    object-fit:contain;
 
     border-radius:14px;
 
     transform:scale(1);
 
-    transition:
-        opacity .8s ease;
-
 }
 
+#livePhoto{
+    opacity:1;
+    z-index:2;
+}
+
+#livePhotoNext{
+    opacity:0;
+    z-index:1;
+}
 @keyframes kenBurns{
 
     from{
@@ -831,15 +907,21 @@ button:hover{
 
     visibility:hidden;
 
+    height:0;
+
+    padding:0;
+
+    overflow:hidden;
+
     transform:translateY(30px);
 
     transition:
         opacity .8s ease,
-        transform .8s ease;
+        transform .8s ease,
+        height .8s ease,
+        padding .8s ease;
 
     text-align:center;
-
-    padding:80px 20px;
 
 }
 
@@ -848,6 +930,10 @@ button:hover{
     opacity:1;
 
     visibility:visible;
+
+    height:auto;
+
+    padding:80px 20px;
 
     transform:translateY(0);
 
@@ -869,17 +955,21 @@ button:hover{
 
     font-size:1.35rem;
 
-    color:white;
+    color:#d4af37;
 
-    margin-bottom:10px;
+    margin:0 auto 10px;
+
+    text-align:center;
 
 }
 
 .ending-show{
 
-    color:#aaa;
+    color:#d4af37;
 
-    margin-bottom:45px;
+    margin:0 auto 45px;
+
+    text-align:center;
 
 }
 
@@ -930,6 +1020,36 @@ button:hover{
     color:#111;
 
     transform:translateY(-2px);
+
+}
+
+.credits-name a{
+
+    display:inline-block;
+
+    background:#d4af37;
+
+    color:#111;
+
+    padding:8px 18px;
+
+    border-radius:6px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    transition:all .25s ease;
+
+}
+
+.credits-name a:hover{
+
+    background:#f0d36b;
+
+    transform:translateY(-1px);
 
 }
 
@@ -1156,6 +1276,17 @@ button:hover{
 
 }
 
+#playerStatus,
+#trackInfo,
+#timeDisplay{
+
+    margin-left:auto;
+    margin-right:auto;
+
+    text-align:center;
+
+}
+
 /* =====================================
    Responsive - Celulares
 ===================================== */
@@ -1278,6 +1409,24 @@ button:hover{
 
 }
 
+.album-cover{
+    height:auto;
+}
+
+.album-cover img{
+    width:100%;
+    height:auto;
+    object-fit:contain;
+}
+
+html.intro-locked,
+body.intro-locked {
+
+    overflow:hidden;
+    height:100%;
+
+}
+
 /* ===== Reproductor móvil ===== */
 
 #playerCard{
@@ -1294,6 +1443,8 @@ button:hover{
     margin-top:0;
     margin-bottom:2px;
 
+    text-align:center;
+
 }
 
 #songTitle{
@@ -1301,6 +1452,8 @@ button:hover{
     font-size:1rem;
     margin-bottom:2px;
     line-height:1.15;
+
+    text-align:center;
 
 }
 

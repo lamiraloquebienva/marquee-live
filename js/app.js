@@ -7,9 +7,21 @@ const creditsButton = document.getElementById("creditsButton");
 const creditsModal = document.getElementById("creditsModal");
 const closeCredits = document.getElementById("closeCredits");
 
+// Bloquear scroll inicial en celulares
+if (window.matchMedia("(max-width: 768px)").matches) {
+
+    document.documentElement.classList.add("intro-locked");
+    document.body.classList.add("intro-locked");
+
+}
+
 if (listenButton && albumSection) {
 
     listenButton.addEventListener("click", () => {
+
+    // Liberar el scroll al comenzar el concierto
+        document.documentElement.classList.remove("intro-locked");
+        document.body.classList.remove("intro-locked");
 
         const concertPlayer = document.getElementById("concertPlayer");
         const albumCover = document.querySelector(".album-cover");
@@ -412,18 +424,29 @@ albumAudio.addEventListener("ended", () => {
 
     } else {
 
-        stopLiveGallery();
+    stopLiveGallery();
 
-        document.getElementById("playerCard")
-            .style.display = "none";
+    document.getElementById("playerCard")
+        .style.display = "none";
 
-        document.getElementById("playlist")
-            .style.display = "none";
+    document.getElementById("playlist")
+        .style.display = "none";
 
-        document.getElementById("concertEnding")
-            .classList.add("visible");
+    const concertEnding =
+        document.getElementById("concertEnding");
 
-    }
+    concertEnding.classList.add("visible");
+
+    setTimeout(() => {
+
+        concertEnding.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }, 300);
+
+}
 
 });
 
@@ -586,8 +609,73 @@ const liveImages = [
     "live18.jpg",
     "live19.jpg",
     "live20.jpg",
-    "live21.jpg"
-
+    "live21.jpg",
+    "live22.jpg",
+    "live23.jpg",
+    "live24.jpg",
+    "live25.jpg",
+    "live26.jpg",
+    "live27.jpg",
+    "live28.jpg",
+    "live29.jpg",
+    "live30.jpg",
+    "live31.jpg",
+    "live32.jpg",
+    "live33.jpg",
+    "live34.jpg",
+    "live35.jpg",
+    "live36.jpg",
+    "live37.jpg",
+    "live38.jpg",
+    "live39.jpg",
+    "live40.jpg",
+    "live41.jpg",
+    "live42.jpg",
+    "live43.jpg",
+    "live44.jpg",
+    "live45.jpg",
+    "live46.jpg",
+    "live47.jpg",
+    "live48.jpg",
+    "live49.jpg",
+    "live50.jpg",
+    "live51.jpg",
+    "live52.jpg",
+    "live53.jpg",
+    "live54.jpg",
+    "live55.jpg",
+    "live56.jpg",
+    "live57.jpg",
+    "live58.jpg",
+    "live59.jpg",
+    "live60.jpg",
+    "live61.jpg",
+    "live62.jpg",
+    "live63.jpg",
+    "live64.jpg",
+    "live65.jpg",
+    "live66.jpg",
+    "live67.jpg",
+    "live68.jpg",
+    "live69.jpg",
+    "live70.jpg",
+    "live71.jpg",
+    "live72.jpg",
+    "live73.jpg",
+    "live74.jpg",
+    "live75.jpg",
+    "live76.jpg",
+    "live77.jpg",
+    "live78.jpg",
+    "live79.jpg",
+    "live80.jpg",
+    "live81.jpg",
+    "live82.jpg",
+    "live83.jpg",
+    "live84.jpg",
+    "live85.jpg",
+    "live86.jpg",
+    
 ];
 
 let shuffledImages = [];
@@ -613,33 +701,44 @@ function shuffleLiveImages(){
 
 function nextLivePhoto(){
 
+    currentLive++;
+
+    if(currentLive >= shuffledImages.length){
+
+        shuffleLiveImages();
+
+    }
+
+    const nextImage =
+        document.getElementById("livePhotoNext");
+
+    nextImage.src =
+        "images/live/" + shuffledImages[currentLive];
+
+    nextImage.style.animation = "none";
+    nextImage.offsetHeight;
+    nextImage.style.animation =
+        "kenBurns 6s linear forwards";
+
+    nextImage.style.transition = "opacity .8s ease";
+    livePhoto.style.transition = "opacity .8s ease";
+
+    nextImage.style.opacity = 1;
     livePhoto.style.opacity = 0;
 
     setTimeout(() => {
 
-        currentLive++;
+        livePhoto.src = nextImage.src;
 
-        if(currentLive >= shuffledImages.length){
+        livePhoto.style.animation = "none";
+        livePhoto.offsetHeight;
+        livePhoto.style.animation =
+            "kenBurns 6s linear forwards";
 
-            shuffleLiveImages();
+        livePhoto.style.opacity = 1;
+        nextImage.style.opacity = 0;
 
-        }
-
-        
-
-        livePhoto.src =
-    "images/live/" + shuffledImages[currentLive];
-
-livePhoto.style.opacity = 1;
-
-// Reinicia la animación Ken Burns
-livePhoto.style.animation = "none";
-
-livePhoto.offsetHeight;
-
-livePhoto.style.animation = "kenBurns 8s linear forwards";
-
-    },400);
+    },800);
 
 }
 
@@ -660,7 +759,7 @@ function changeLivePhotoNow(){
 
     livePhoto.offsetHeight;
 
-    livePhoto.style.animation = "kenBurns 8s linear forwards";
+    livePhoto.style.animation = "kenBurns 6s linear forwards";
 
 }
 
@@ -677,7 +776,7 @@ function startLiveGallery(){
 
     if(liveGalleryInterval) return;
 
-    liveGalleryInterval = setInterval(nextLivePhoto, 8000);
+    liveGalleryInterval = setInterval(nextLivePhoto, 6000);
 
 }
 
